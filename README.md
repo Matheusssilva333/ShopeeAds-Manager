@@ -11,6 +11,6 @@ Criar um Saas com um sistema de inteligência artificial capaz de organizar todo
 
   # Tecnologias a serem utilizadas
   - Python (Para a lógica principal e funcionamento do Saas)
-  - DOCKER
+  - Docker
   - HTML
   - CSS
