@@ -3,7 +3,6 @@
 
 # Objetivo
 Desenvolver um SaaS de análise de vendas de alta precisão para vendedores do Mercado Livre em fase de crescimento, focado em visibilidade financeira, desempenho de produtos e análise de rentabilidade, utilizando inteligência artificial para gerar relatórios, dashboards e insights estratégicos a partir dos dados do Mercado Livre.
-Funcionalidades.
 
 
 # 📦 Análise de Produtos
