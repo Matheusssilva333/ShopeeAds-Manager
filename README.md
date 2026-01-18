@@ -5,6 +5,7 @@ Criar um Saas de análise de vendas para e-commerces em fase de crescimento pode
 
 # Funcionalidades
 - Análise de produtos mais vendidos 
+- Cálculo de retorno sobre o investimento 
 - Geração automática de relatórios e dashboards
 - Geração automática de planilhas por cliente 
 - Gráfico em tempo real de evolução de vendas
