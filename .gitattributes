@@ -1,0 +1,27 @@
+# Mark source code as vendored to affect GitHub language stats
+# This will make the repository appear as "Dockerfile" (or Shell/Makefile) primarily
+
+# Backend
+*.py linguist-vendored
+backend/**/*.py linguist-vendored
+
+# Frontend
+*.ts linguist-vendored
+*.tsx linguist-vendored
+*.js linguist-vendored
+*.css linguist-vendored
+frontend/**/*.ts linguist-vendored
+frontend/**/*.tsx linguist-vendored
+frontend/**/*.js linguist-vendored
+frontend/**/*.css linguist-vendored
+
+# Documentation
+*.md linguist-vendored
+
+# Configs
+*.json linguist-vendored
+*.yml linguist-vendored
+*.yaml linguist-vendored
+# Keep Dockerfile and related detected
+Dockerfile linguist-detectable
+*.dockerfile linguist-detectable
