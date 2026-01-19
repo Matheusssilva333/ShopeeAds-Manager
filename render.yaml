@@ -1,0 +1,31 @@
+services:
+  # Serviço Backend (Python FastAPI)
+  - type: web
+    name: datavenda-backend
+    env: docker
+    region: oregon
+    plan: free
+    rootDir: backend
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: ML_APP_ID
+        sync: false
+      - key: ML_CLIENT_SECRET
+        sync: false
+      - key: PORT
+        value: 8000
+
+  # Serviço Frontend (Next.js)
+  - type: web
+    name: datavenda-frontend
+    env: docker
+    region: oregon
+    plan: free
+    rootDir: frontend
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: datavenda-backend
+          property: url
