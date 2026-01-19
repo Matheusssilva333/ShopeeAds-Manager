@@ -19,7 +19,10 @@ origins = [
 # Adicionar origem do ambiente (ex: URL do Render)
 env_origins = os.getenv("ALLOWED_ORIGINS")
 if env_origins:
-    origins.extend(env_origins.split(","))
+    for origin in env_origins.split(","):
+        if not origin.startswith("http"):
+            origin = f"https://{origin}"
+        origins.append(origin)
 
 app.add_middleware(
     CORSMiddleware,

@@ -30,6 +30,8 @@ st.sidebar.title("Navegação")
 page = st.sidebar.radio("Ir para", ["Dashboard", "Conectar Contas", "Configurações"])
 
 API_URL = os.getenv("API_URL", "http://backend:8000")
+if API_URL and not API_URL.startswith("http"):
+    API_URL = f"https://{API_URL}"
 
 if page == "Dashboard":
     st.info("Bem-vindo ao DataVenda. Conecte suas contas para ver os dados.")

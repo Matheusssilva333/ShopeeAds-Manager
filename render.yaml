@@ -17,7 +17,7 @@ services:
         fromService:
           type: web
           name: datavenda-frontend
-          property: url
+          property: host
 
   # Serviço Frontend (Streamlit)
   - type: web
@@ -31,6 +31,6 @@ services:
         fromService:
           type: web
           name: datavenda-backend
-          property: url
+          property: host
       - key: PORT
         value: 8501
