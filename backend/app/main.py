@@ -7,12 +7,19 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Configuração CORS (Permitir que o frontend acesse a API)
+import os
+
+# Configuração CORS
 origins = [
-    "http://localhost:3000",  # Frontend Antigo (se necessário)
-    "http://localhost:8501",  # Frontend Streamlit
+    "http://localhost:3000",
+    "http://localhost:8501",
     "http://localhost:8000",
 ]
+
+# Adicionar origem do ambiente (ex: URL do Render)
+env_origins = os.getenv("ALLOWED_ORIGINS")
+if env_origins:
+    origins.extend(env_origins.split(","))
 
 app.add_middleware(
     CORSMiddleware,

@@ -30,5 +30,5 @@ EXPOSE 8501
 # Healthcheck para garantir que o container está saudável
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health || exit 1
 
-# Comando para rodar o Streamlit
-CMD ["streamlit", "run", "streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Comando para rodar o Streamlit (usando $PORT do Render)
+CMD sh -c "streamlit run streamlit_app.py --server.port=${PORT:-8501} --server.address=0.0.0.0"

@@ -7,14 +7,19 @@ services:
     plan: free
     rootDir: backend
     envVars:
-      - key: ML_APP_ID
+      - key: SHOPEE_PARTNER_ID
         sync: false
-      - key: ML_CLIENT_SECRET
+      - key: SHOPEE_KEY
         sync: false
-      - key: PORT
-        value: 8000
+      - key: SHOPEE_REDIRECT_URI
+        sync: false
+      - key: ALLOWED_ORIGINS
+        fromService:
+          type: web
+          name: datavenda-frontend
+          property: url
 
-  # Serviço Frontend (Next.js)
+  # Serviço Frontend (Streamlit)
   - type: web
     name: datavenda-frontend
     env: docker
@@ -22,8 +27,10 @@ services:
     plan: free
     rootDir: frontend
     envVars:
-      - key: NEXT_PUBLIC_API_URL
+      - key: API_URL
         fromService:
           type: web
           name: datavenda-backend
           property: url
+      - key: PORT
+        value: 8501
