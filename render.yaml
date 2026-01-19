@@ -5,9 +5,7 @@ services:
     env: docker
     region: oregon
     plan: free
-    rootDir: .
-    dockerfilePath: backend/Dockerfile
-    dockerContext: backend
+    rootDir: backend
     envVars:
       - key: ML_APP_ID
         sync: false
@@ -22,9 +20,7 @@ services:
     env: docker
     region: oregon
     plan: free
-    rootDir: .
-    dockerfilePath: frontend/Dockerfile
-    dockerContext: frontend
+    rootDir: frontend
     envVars:
       - key: NEXT_PUBLIC_API_URL
         fromService:
