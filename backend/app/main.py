@@ -9,7 +9,8 @@ app = FastAPI(
 
 # Configuração CORS (Permitir que o frontend acesse a API)
 origins = [
-    "http://localhost:3000",  # Frontend Next.js
+    "http://localhost:3000",  # Frontend Antigo (se necessário)
+    "http://localhost:8501",  # Frontend Streamlit
     "http://localhost:8000",
 ]
 

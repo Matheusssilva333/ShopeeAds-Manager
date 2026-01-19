@@ -19,5 +19,5 @@ Bem-vindo ao **ShopeeAds Manager**, a plataforma definitiva para gestão de comi
    - **Linux/Mac**: `docker-compose up --build`
 
 4. **Acessar**:
-   - Frontend: [http://localhost:3000](http://localhost:3000)
+   - Frontend: [http://localhost:8501](http://localhost:8501)
    - API: [http://localhost:8000/docs](http://localhost:8000/docs)
