@@ -1,6 +1,6 @@
 @echo off
 echo ==========================================
-echo    Iniciando DataVenda SaaS (Docker)
+echo    Iniciando ShopeeAds Manager (Docker)
 echo ==========================================
 
 if not exist "backend\.env" (

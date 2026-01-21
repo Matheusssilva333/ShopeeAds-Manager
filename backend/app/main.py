@@ -1,28 +1,27 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
-app = FastAPI(
-    title="DataVenda API",
-    description="Backend para o SaaS de Análise de E-commerce Mercado Livre",
-    version="1.0.0"
-)
-
+from app.api.v1.router import api_router
+from app.core.config import settings
 import os
 
+app = FastAPI(
+    title=settings.PROJECT_NAME,
+    version=settings.VERSION,
+    description="Backend para ShopeeAds Manager"
+)
+
 # Configuração CORS
-origins = [
-    "http://localhost:3000",
-    "http://localhost:8501",
-    "http://localhost:8000",
-]
+origins = settings.ALLOWED_ORIGINS.copy()
 
 # Adicionar origem do ambiente (ex: URL do Render)
 env_origins = os.getenv("ALLOWED_ORIGINS")
 if env_origins:
     for origin in env_origins.split(","):
-        if not origin.startswith("http"):
-            origin = f"https://{origin}"
-        origins.append(origin)
+        origin = origin.strip()
+        if origin:
+            if not origin.startswith("http"):
+                origin = f"https://{origin}"
+            origins.append(origin)
 
 app.add_middleware(
     CORSMiddleware,
@@ -32,15 +31,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from app.api import auth
-app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
+# Roteador Principal
+app.include_router(api_router, prefix=settings.API_V1_STR)
 
 @app.get("/")
 async def read_root():
     return {
-        "message": "DataVenda API está online 🚀",
+        "message": f"{settings.PROJECT_NAME} API está online 🚀",
         "status": "active",
-        "version": "1.0.0"
+        "version": settings.VERSION
     }
 
 @app.get("/health")
