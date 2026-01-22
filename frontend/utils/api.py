@@ -42,3 +42,14 @@ def get_auth_url():
     except:
         pass
     return None
+
+def upload_commissions(file):
+    try:
+        files = {"file": (file.name, file.getvalue(), file.type)}
+        res = requests.post(f"{API_URL}{API_V1_STR}/commissions/upload", files=files, timeout=10)
+        if res.status_code == 200:
+            return res.json()
+        else:
+            return {"error": res.json().get("detail", "Erro desconhecido")}
+    except Exception as e:
+        return {"error": str(e)}
