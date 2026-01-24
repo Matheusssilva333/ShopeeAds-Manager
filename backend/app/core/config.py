@@ -8,11 +8,7 @@ class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     
     # CORS
-    ALLOWED_ORIGINS: List[str] = [
-        "http://localhost:3000",
-        "http://localhost:8501",
-        "http://localhost:8000",
-    ]
+    ALLOWED_ORIGINS: str = "http://localhost:3000,http://localhost:8501,http://localhost:8000"
     
     # Shopee API
     SHOPEE_PARTNER_ID: Optional[str] = None

@@ -11,21 +11,20 @@ app = FastAPI(
 )
 
 # Configuração CORS
-origins = settings.ALLOWED_ORIGINS.copy()
+origins = []
+if settings.ALLOWED_ORIGINS:
+    origins = [origin.strip() for origin in settings.ALLOWED_ORIGINS.split(",") if origin.strip()]
 
-# Adicionar origem do ambiente (ex: URL do Render)
-env_origins = os.getenv("ALLOWED_ORIGINS")
-if env_origins:
-    for origin in env_origins.split(","):
-        origin = origin.strip()
-        if origin:
-            if not origin.startswith("http"):
-                origin = f"https://{origin}"
-            origins.append(origin)
+# Adicionar origem do ambiente (garantir que http esteja presente)
+final_origins = []
+for origin in origins:
+    if not origin.startswith("http"):
+        origin = f"https://{origin}"
+    final_origins.append(origin)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=final_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
